@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="un5lidong@gmail.com"/>
+    <meta name="author2" content="chenjianhua"/>
+    <title>UN*5 查询助手</title>
+</head>
+<body>
+<header>
+    <!--  <div style="font:25px;text-align: center">
+          <h1>查询助手</h1>
+      </div> -->
+    <div class="Search">
+        <input class="keyword"
+               style="background: #F7F7F7;color: #888;border:1px solid #E4E4E4;outline:none;width:220px;height:25px;border-radius:1px;"
+               placeholder="请输入关键词" value=""/>
+        <button class="doSearch"
+                style="width:60px;height:28px;background: #F7F7F7;color: #888;border:1px solid #dfe4e6;outline: none">搜索
+        </button>
+    </div>
+    <style>
+        .BasicWindow {
+            width: 49.8%;
+            height: 350px;
+            scrolling: auto;
+            margin-top: 5px;
+            min-width: 60px;
+            border: 1px solid #E4E4E4;
+            margin: 0 0;
+        }
+
+        .doSearch {
+            border:1px solid red;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .fl {
+            float: left;
+        }
+    </style>
+</header>
+<main>
+    <iframe class="BaiduWindow fl BasicWindow" name="baidu">
+
+    </iframe>
+    <iframe class="SougouWindow fr BasicWindow" name="sogou">
+
+    </iframe>
+    <iframe class="BingWindow fl BasicWindow" name="bing">
+
+    </iframe>
+    <iframe class="Three60Window fr BasicWindow" name="three60">
+
+    </iframe>
+</main>
+<footer>
+    <p style="color: #888;">&copy;Pop On,Group 1995-2016</p>
+</footer>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.js"></script>
+<script>
+    $(function () {
+        function Search() {
+            var keyWord = $('.keyword').val();
+            console.log(keyWord);
+            $('.doSearch').css('border','1px solid red');
+            $('.doSearch').css('border-radius','3px');
+            $('.BaiduWindow').attr('src', "https://www.baidu.com/s?wd=" + encodeURI(keyWord));
+            $('.SougouWindow').attr('src', "https://www.sogou.com/web?query=" + encodeURI(keyWord));
+            $('.BingWindow').attr('src', "http://cn.bing.com/search?q=" + encodeURI(keyWord));
+            $('.Three60Window').attr('src', "https://www.so.com/s?q=" + encodeURI(keyWord));
+        }
+
+        $('.doSearch').click(function () {
+            Search();
+        });
+		$(document).keydown(function(event){
+			if(event.keyCode == 13){
+			Search();
+			}
+			}
+		);
+       /*  $('.keyword').keydown(function () {
+            Search();
+        }); */
+    });
+
+</script>
+</html>
